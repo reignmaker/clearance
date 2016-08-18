@@ -85,6 +85,12 @@ module Clearance
     # @return [ActiveRecord::Base]
     attr_accessor :user_model
 
+    # ActionController class that is used to inherit from for
+    # Clearance::BaseController
+    # Defaults to `::ApplicationController`
+    # @return [ActionController::Base]
+    attr_accessor :application_controller
+
     def initialize
       @allow_sign_up = true
       @cookie_expiration = ->(cookies) { 1.year.from_now.utc }
@@ -101,6 +107,10 @@ module Clearance
 
     def user_model
       @user_model ||= ::User
+    end
+
+    def application_controller
+      @application_controller ||= ::ApplicationController
     end
 
     # Is the user sign up route enabled?

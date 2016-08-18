@@ -1,2 +1,2 @@
-class Clearance::BaseController < ApplicationController
+class Clearance::BaseController < Clearance.configuration.application_controller
 end
